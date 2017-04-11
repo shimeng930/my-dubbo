@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+    <!-- consumer.xml application name -->
+    <dubbo:application name="dubbo-consumer" />
+
+    <!-- registry address, used for consumer.xml to discover services -->
+    <dubbo:registry address="multicast://224.5.6.7:1234" />
+    <dubbo:consumer timeout="5000" />
+    <!--<dubbo:registry address="zookeeper://192.168.74.129:2181" check="false"></dubbo:registry>-->
+
+    <!-- which service to consume? -->
+    <dubbo:reference id="sayHelloService" interface="com.shim.api.SayHello"/>
+</beans>
